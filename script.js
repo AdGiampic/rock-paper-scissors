@@ -17,7 +17,7 @@ function getComputerChoice () { //funzione che seleziona casualmente tra "Sasso,
     }
 }
 
-const comptrChoice = getComputerChoice()
+let comptrChoice = getComputerChoice()
 
 let plyrChoice = prompt("Choose between 'Rock','Paper' or 'Scissors' to play.")  // chiedo di immettere un testo
 
@@ -33,18 +33,49 @@ if (ctrlinput (plyrChoice) == false) { // se il testo non è valido interrompo
     throw Error ("Text Invalid. \nPlease input the correct text to play.")
 }
 
+let plyrScore = 0;
+let comptrScore = 0;
 function playRound (comptrChoice,plyrChoice) { // funzione che gioca il round tra pc e giocatore
-    let plyrScore = 0;
-    let comptrScore = 0;
     if (comptrChoice == plyrChoice) {  
-        return 0 // se entrambi hanno scelto la stessa opzione allora è pari
+        return "tie" // se entrambi hanno scelto la stessa opzione allora è pari
     }
     if (comptrChoice == Scissors && plyrChoice == Paper) {
-        return 1
+        return comptrScore +=1;
+        //return "You lost" + " computer: " + comptrChoice + ",plyr: " + plyrChoice // forbice carta
+    }
+    if (comptrChoice == Paper && plyrChoice == Scissors) {
+        return plyrScore +=1;
+        // return "You won" + " computer: " + comptrChoice + ",plyr: " + plyrChoice // carta forbice
+    }
+    if (comptrChoice == Scissors && plyrChoice == Rock) {
+        return plyrScore +=1;
+        //return "You won" + " computer: " + comptrChoice + ",plyr: " + plyrChoice //forbice sasso
+    }
+    if (comptrChoice == Rock && plyrChoice == Scissors) {
+        return comptrScore +=1;
+        //return "You lost" + " computer: " + comptrChoice + ",plyr: " + plyrChoice // sasso forbice
+    }
+    if (comptrChoice == Paper && plyrChoice == Rock) {
+        return plyrScore +=1;
+        //return "You won" + " computer: " + comptrChoice + ",plyr: " + plyrChoice  //carta sasso
+    }
+    if (comptrChoice == Rock && plyrChoice == Paper) {
+        return comptrScore +=1;
+        //return "You lost" + " computer: " + comptrChoice + ",plyr: " + plyrChoice  //sasso carta
+    }
+    
+}
+
+function game () {
+    for (let i = 0; i < 5; i++) {
+        comptrChoice = getComputerChoice()
+        plyrChoice = prompt("Choose between 'Rock','Paper' or 'Scissors' to play.")
+        playRound (comptrChoice,plyrChoice)
+        return plyrScore + " - " +comptrScore
     }
 }
 
-console.log(playRound(comptrChoice,plyrChoice))
-
+console.log(game(plyrScore,comptrScore))
+//console.log(playRound(comptrChoice,plyrChoice))
 
 
