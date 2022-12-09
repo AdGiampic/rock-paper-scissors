@@ -3,25 +3,22 @@ const Paper = "paper";
 const Scissors = "scissors";
 
 
-function getComputerChoice () { //funzione che seleziona casualmente tra "Sasso,carta e forbice"
+function getComputerChoice () { //function that lets the CPU pick between Rock Paper Scissors"
 
     const min = 1;
     const max = 3;
-    let nmb = Math.floor(Math.random() *(max - min + 1)) + min; // genero un numero casuale da 1 a 3
-    if (nmb == 1) {  // se il numero è 1 è sassp
+    let nmb = Math.floor(Math.random() *(max - min + 1)) + min; // random number between 1 and 3
+    if (nmb == 1) {  // 1 is rock
         return Rock;
-    } else if (nmb == 2) { // se 2 è carta
+    } else if (nmb == 2) { // 2 is paper
         return Paper;
     }else{
-        return Scissors; // se non è nè 1 nè 2 è forbici
+        return Scissors; // 3 is scissors
     }
 }
 
-let comptrChoice = getComputerChoice()
 
-let plyrChoice = prompt("Choose between 'Rock','Paper' or 'Scissors' to play.")  // chiedo di immettere un testo
-
-function ctrlinput (plyrChoice) {  // funzione che controlla la corretteza del testo
+function ctrlinput (plyrChoice) {  // function that checks the input text from the player
     if (plyrChoice.toLowerCase() == Rock || plyrChoice.toLowerCase() == Paper || plyrChoice.toLowerCase() == Scissors ) {
         return true;
     } else {
@@ -29,49 +26,52 @@ function ctrlinput (plyrChoice) {  // funzione che controlla la corretteza del t
     }
 }
 
-if (ctrlinput (plyrChoice) == false) { // se il testo non è valido interrompo
-    throw Error ("Text Invalid. \nPlease input the correct text to play.")
-}
+
 
 let plyrScore = 0;
 let comptrScore = 0;
-function playRound (comptrChoice,plyrChoice) { // funzione che gioca il round tra pc e giocatore
-    if (comptrChoice == plyrChoice) {  
-        return "tie" // se entrambi hanno scelto la stessa opzione allora è pari
-    }
-    if (comptrChoice == Scissors && plyrChoice == Paper) {
-        return comptrScore +=1;
-        //return "You lost" + " computer: " + comptrChoice + ",plyr: " + plyrChoice // forbice carta
-    }
-    if (comptrChoice == Paper && plyrChoice == Scissors) {
-        return plyrScore +=1;
-        // return "You won" + " computer: " + comptrChoice + ",plyr: " + plyrChoice // carta forbice
-    }
-    if (comptrChoice == Scissors && plyrChoice == Rock) {
-        return plyrScore +=1;
-        //return "You won" + " computer: " + comptrChoice + ",plyr: " + plyrChoice //forbice sasso
-    }
-    if (comptrChoice == Rock && plyrChoice == Scissors) {
-        return comptrScore +=1;
-        //return "You lost" + " computer: " + comptrChoice + ",plyr: " + plyrChoice // sasso forbice
-    }
-    if (comptrChoice == Paper && plyrChoice == Rock) {
-        return plyrScore +=1;
-        //return "You won" + " computer: " + comptrChoice + ",plyr: " + plyrChoice  //carta sasso
-    }
-    if (comptrChoice == Rock && plyrChoice == Paper) {
-        return comptrScore +=1;
-        //return "You lost" + " computer: " + comptrChoice + ",plyr: " + plyrChoice  //sasso carta
-    }
-    
-}
-
-function game () {
+function game (plyrScore,comptrScore) {
     for (let i = 0; i < 5; i++) {
-        comptrChoice = getComputerChoice()
-        plyrChoice = prompt("Choose between 'Rock','Paper' or 'Scissors' to play.")
-        playRound (comptrChoice,plyrChoice)
-        return plyrScore + " - " +comptrScore
+        let comptrChoice = getComputerChoice()
+        let plyrChoice = prompt("Choose between 'Rock','Paper' or 'Scissors' to play.")
+        if (ctrlinput (plyrChoice) == false) { // if the input is invalid i'll block the script
+            throw Error ("Text Invalid. \nPlease input the correct text to play.")
+        }
+        function playRound (comptrChoice,plyrChoice) { // function that plays a round of the game
+            if (comptrChoice == plyrChoice) {  
+                console.log("Tie") // if both CPU and player picked the same option then it's a tie
+            }
+            if (comptrChoice == Scissors && plyrChoice == Paper) {
+                ++comptrScore
+                return comptrScore
+            }
+            if (comptrChoice == Paper && plyrChoice == Scissors) {
+                ++plyrScore
+                return plyrScore
+            }
+            if (comptrChoice == Scissors && plyrChoice == Rock) {
+                ++plyrScore
+                return plyrScore
+            }
+            if (comptrChoice == Rock && plyrChoice == Scissors) {
+                ++comptrScore
+                return comptrScore
+            }
+            if (comptrChoice == Paper && plyrChoice == Rock) {
+                ++plyrScore
+                return plyrScore
+            }
+            if (comptrChoice == Rock && plyrChoice == Paper) {
+                ++comptrScore
+                return comptrScore
+            }
+    
+        }
+    }
+    if (plyrScore > comptrScore) {
+        console.log("Congratulations, you won the match. Score: " + plyrScore + " - " + comptrScore)
+    }else {
+        console.log("Too bad, you lost, maybe next time. Score: " + plyrScore + " - " + comptrScore)
     }
 }
 
