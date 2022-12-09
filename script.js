@@ -31,37 +31,31 @@ let plyrChoice ;
 let plyrScore = Number(0);
 let comptrScore = Number(0);
 function playRound (comptrChoice,plyrChoice) { // function that plays a round of the game
-    if (comptrChoice == plyrChoice) {  
-        return comptrScore + " - " + plyrScore;
-        //console.log("Tie"); // if both CPU and player picked the same option then it's a tie
+    if (comptrChoice == plyrChoice) {   
+        return comptrScore + " - " + plyrScore; // if both picked the same thing is a tie
     }
-    if (comptrChoice == Scissors && plyrChoice == Paper) {
+    if (comptrChoice == Scissors && plyrChoice == Paper) { //scissors beats paper
         ++comptrScore;
         return comptrScore + " - " + plyrScore;
     }
     if (comptrChoice == Paper && plyrChoice == Scissors) {
         ++plyrScore;
-        //return plyrScore;
         return comptrScore + " - " + plyrScore;
     }
-    if (comptrChoice == Scissors && plyrChoice == Rock) {
+    if (comptrChoice == Scissors && plyrChoice == Rock) { // rock beats Scissors
         ++plyrScore;
-        //return plyrScore;
         return comptrScore + " - " + plyrScore;
     }
     if (comptrChoice == Rock && plyrChoice == Scissors) {
         ++comptrScore;
-        //return comptrScore;
         return comptrScore + " - " + plyrScore;
     }
-    if (comptrChoice == Paper && plyrChoice == Rock) {
-        ++plyrScore;
-        //return plyrScore;
+    if (comptrChoice == Paper && plyrChoice == Rock) { // paper beats rock
+        ++comptrScore;
         return comptrScore + " - " + plyrScore;
     }
     if (comptrChoice == Rock && plyrChoice == Paper) {
-        ++comptrScore;
-        //return comptrScore;
+        ++plyrScore;
         return comptrScore + " - " + plyrScore;
     }
 
@@ -83,7 +77,4 @@ function game () {
     }
 }
 
-
-
-//console.log(playRound (comptrChoice,plyrChoice))
 console.log(game())
