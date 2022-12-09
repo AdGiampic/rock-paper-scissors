@@ -26,56 +26,64 @@ function ctrlinput (plyrChoice) {  // function that checks the input text from t
     }
 }
 
+let comptrChoice;
+let plyrChoice ;
+let plyrScore = Number(0);
+let comptrScore = Number(0);
+function playRound (comptrChoice,plyrChoice) { // function that plays a round of the game
+    if (comptrChoice == plyrChoice) {  
+        return comptrScore + " - " + plyrScore;
+        //console.log("Tie"); // if both CPU and player picked the same option then it's a tie
+    }
+    if (comptrChoice == Scissors && plyrChoice == Paper) {
+        ++comptrScore;
+        return comptrScore + " - " + plyrScore;
+    }
+    if (comptrChoice == Paper && plyrChoice == Scissors) {
+        ++plyrScore;
+        //return plyrScore;
+        return comptrScore + " - " + plyrScore;
+    }
+    if (comptrChoice == Scissors && plyrChoice == Rock) {
+        ++plyrScore;
+        //return plyrScore;
+        return comptrScore + " - " + plyrScore;
+    }
+    if (comptrChoice == Rock && plyrChoice == Scissors) {
+        ++comptrScore;
+        //return comptrScore;
+        return comptrScore + " - " + plyrScore;
+    }
+    if (comptrChoice == Paper && plyrChoice == Rock) {
+        ++plyrScore;
+        //return plyrScore;
+        return comptrScore + " - " + plyrScore;
+    }
+    if (comptrChoice == Rock && plyrChoice == Paper) {
+        ++comptrScore;
+        //return comptrScore;
+        return comptrScore + " - " + plyrScore;
+    }
 
+}
 
-let plyrScore = 0;
-let comptrScore = 0;
-function game (plyrScore,comptrScore) {
+function game () {
     for (let i = 0; i < 5; i++) {
-        let comptrChoice = getComputerChoice()
-        let plyrChoice = prompt("Choose between 'Rock','Paper' or 'Scissors' to play.")
+        let comptrChoice = getComputerChoice();
+        let plyrChoice = prompt("Choose between 'Rock','Paper' or 'Scissors' to play.");
         if (ctrlinput (plyrChoice) == false) { // if the input is invalid i'll block the script
-            throw Error ("Text Invalid. \nPlease input the correct text to play.")
+            throw Error ("Text Invalid. \nPlease input the correct text to play.");
         }
-        function playRound (comptrChoice,plyrChoice) { // function that plays a round of the game
-            if (comptrChoice == plyrChoice) {  
-                console.log("Tie") // if both CPU and player picked the same option then it's a tie
-            }
-            if (comptrChoice == Scissors && plyrChoice == Paper) {
-                ++comptrScore
-                return comptrScore
-            }
-            if (comptrChoice == Paper && plyrChoice == Scissors) {
-                ++plyrScore
-                return plyrScore
-            }
-            if (comptrChoice == Scissors && plyrChoice == Rock) {
-                ++plyrScore
-                return plyrScore
-            }
-            if (comptrChoice == Rock && plyrChoice == Scissors) {
-                ++comptrScore
-                return comptrScore
-            }
-            if (comptrChoice == Paper && plyrChoice == Rock) {
-                ++plyrScore
-                return plyrScore
-            }
-            if (comptrChoice == Rock && plyrChoice == Paper) {
-                ++comptrScore
-                return comptrScore
-            }
-    
-        }
+        playRound (comptrChoice,plyrChoice);
     }
     if (plyrScore > comptrScore) {
-        console.log("Congratulations, you won the match. Score: " + plyrScore + " - " + comptrScore)
+        return "Congratulations, you won the match. Score: " + plyrScore + " - " + comptrScore;
     }else {
-        console.log("Too bad, you lost, maybe next time. Score: " + plyrScore + " - " + comptrScore)
+        return "Too bad, you lost, maybe next time. Score: " + plyrScore + " - " + comptrScore;
     }
 }
 
-console.log(game(plyrScore,comptrScore))
-//console.log(playRound(comptrChoice,plyrChoice))
 
 
+//console.log(playRound (comptrChoice,plyrChoice))
+console.log(game())
