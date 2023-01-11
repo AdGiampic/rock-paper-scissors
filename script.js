@@ -50,21 +50,16 @@ function playRound (comptrChoice,plyrChoice) { // function that plays a round of
     }
 
 }
-
-function getplyrChoice () {
-    const btnr = document.querySelector('#rock');
-    const btnp = document.querySelector('#paper');
-    const btns = document.querySelector('#scissors');
-    btnr.onclick = () => Rock; // if button rock is clicked return rock
-    btnp.onclick = () => Paper; // paper
-    btns.onclick = () => Scissors;
-    
+let plyrChoice ;
+function getplyrChoice (event) {
+    plyrChoice = event.target.id;
+    //alert (plyrChoice)
+    return plyrChoice;
 }
-document.addEventListener("click",getplyrChoice());
 
 function game () {
     let comptrChoice = getComputerChoice();
-    let plyrChoice = "";
+    let plyrChoice = getplyrChoice(event) ;
     playRound (comptrChoice,plyrChoice);
     if (plyrScore > comptrScore) {
         return console.log("Congratulations, you won the match. Score: " + plyrScore + " - " + comptrScore);
