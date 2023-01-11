@@ -18,16 +18,6 @@ function getComputerChoice () { //function that lets the CPU pick between Rock P
 }
 
 
-function ctrlinput (plyrChoice) {  // function that checks the input text from the player
-    if (plyrChoice.toLowerCase() == Rock || plyrChoice.toLowerCase() == Paper || plyrChoice.toLowerCase() == Scissors ) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-let comptrChoice;
-let plyrChoice ;
 let plyrScore = Number(0);
 let comptrScore = Number(0);
 function playRound (comptrChoice,plyrChoice) { // function that plays a round of the game
@@ -61,20 +51,24 @@ function playRound (comptrChoice,plyrChoice) { // function that plays a round of
 
 }
 
+function getplyrChoice () {
+    const btnr = document.querySelector('#rock');
+    const btnp = document.querySelector('#paper');
+    const btns = document.querySelector('#scissors');
+    btnr.onclick = () => Rock; // if button rock is clicked return rock
+    btnp.onclick = () => Paper; // paper
+    btns.onclick = () => Scissors;
+    
+}
+document.addEventListener("click",getplyrChoice());
+
 function game () {
-    for (let i = 0; i < 5; i++) {
-        let comptrChoice = getComputerChoice();
-        let plyrChoice = prompt("Choose between 'Rock','Paper' or 'Scissors' to play.");
-        if (ctrlinput (plyrChoice) == false) { // if the input is invalid i'll block the script
-            throw Error ("Text Invalid. \nPlease input the correct text to play.");
-        }
-        playRound (comptrChoice,plyrChoice);
-    }
+    let comptrChoice = getComputerChoice();
+    let plyrChoice = "";
+    playRound (comptrChoice,plyrChoice);
     if (plyrScore > comptrScore) {
-        return "Congratulations, you won the match. Score: " + plyrScore + " - " + comptrScore;
+        return console.log("Congratulations, you won the match. Score: " + plyrScore + " - " + comptrScore);
     }else {
-        return "Too bad, you lost, maybe next time. Score: " + plyrScore + " - " + comptrScore;
+        return console.log("Too bad, you lost, maybe next time. Score: " + plyrScore + " - " + comptrScore);
     }
 }
-
-console.log(game())
