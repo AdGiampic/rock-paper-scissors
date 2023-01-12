@@ -1,0 +1,16 @@
+body{
+    background-color: yellow;
+}
+
+#main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#choices{
+    border: 1px black solid;
+    width: 1000px;
+    height: 400px;
+}
