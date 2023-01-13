@@ -23,6 +23,7 @@ body{
     border: 1px black solid;
     width: 250px;
     height: 300px;
+    cursor: pointer;
 }
 
 img{
@@ -36,4 +37,11 @@ img{
     font-weight: bold;
     display: flex;
     justify-content: center;
+}
+
+#buttons {
+    display: flex;
+    justify-content: space-around;
+    cursor: pointer;
+    width: 250px;
 }

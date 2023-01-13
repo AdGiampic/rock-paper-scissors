@@ -50,7 +50,17 @@ function playRound (comptrChoice,plyrChoice) { // function that plays a round of
     }
 
 }
+
 let plyrChoice ;
+/*
+const choices = document.querySelectorAll(".choice")
+choices.forEach((choice) => {
+    choice.addEventListener("click", () => {
+        getplyrChoice(event)
+    })
+})
+*/
+
 function getplyrChoice (event) {
     plyrChoice = event.target.id;
     //alert (plyrChoice)
@@ -59,7 +69,7 @@ function getplyrChoice (event) {
 
 function game () {
     let comptrChoice = getComputerChoice();
-    let plyrChoice = getplyrChoice(event) ;
+    let plyrChoice = getplyrChoice (event);
     playRound (comptrChoice,plyrChoice);
     if (plyrScore > comptrScore) {
         return console.log("Congratulations, you won the match. Score: " + plyrScore + " - " + comptrScore);
