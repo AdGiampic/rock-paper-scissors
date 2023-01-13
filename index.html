@@ -13,11 +13,22 @@
         <p>You will play five rounds against the CPU, the first player that reaches 5 points, wins the game!</p>
         <p>Pick one of the following choices to play!</p>
         <div id = "choices">
-
+            <div class = "choice" id = "rock" onclick=game()>
+                <img src="rock.png">
+                <p class ="caption">Rock</p>
+            </div>
+            <div class = "choice" id = "paper" onclick=game()>
+                <img src="paper.jpeg">
+                <p class ="caption">Paper</p>
+            </div>
+            <div class = "choice" id = "scissors" onclick=game()>
+                <img src="scissors.jpg">
+                <p class ="caption">Scissors</p>
+            </div>
         </div>
-        <button id = "rock" onclick=game()>Rock</button>
+        <!--<button id = "rock" onclick=game()>Rock</button>
         <button id = "paper" onclick=game()>Paper</button>
-        <button id = "scissors" onclick=game()>Scissors</button>
+        <button id = "scissors" onclick=game()>Scissors</button> -->
         <script src = "script.js"></script>
     </div>
 </body>

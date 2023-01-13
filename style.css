@@ -12,5 +12,28 @@ body{
 #choices{
     border: 1px black solid;
     width: 1000px;
-    height: 400px;
+    height: 500px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+}
+
+.choice {
+    border: 1px black solid;
+    width: 250px;
+    height: 300px;
+}
+
+img{
+    width: 200px;
+    height: 200px;
+    padding-left: 25px;
+}
+
+.caption {
+    font-size: 30px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
 }
