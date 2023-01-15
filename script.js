@@ -70,12 +70,15 @@ function game () {
             score.innerHTML = "Too bad, you lost" 
         }
         // hide game buttons
-        document.getElementById("#rock").style.visibility = "hidden"
-        document.getElementById("#paper").style.visibility = "hidden"
-        document.getElementById("#scissors").style.visibility = "hidden"
+        document.getElementById("rock").style.visibility = "hidden"
+        document.getElementById("paper").style.visibility = "hidden"
+        document.getElementById("scissors").style.visibility = "hidden"
         const replay = document.createElement("button"); // creating replay button
-        replay.innerHTML = "Wanna Replay?"
-        document.getElementById("#buttons").appendChild(replay)
-        //replay.setAttribute("style", )
+        replay.innerHTML = "Replay"
+        replay.setAttribute("style", "margin-right :150px")
+        document.getElementById("buttons").appendChild(replay) // if the user clicks the button the page will be reloaded
+        replay.addEventListener("click", () => {
+            window.location.reload()
+        })
     }
 }
