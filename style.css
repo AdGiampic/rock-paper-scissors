@@ -45,3 +45,8 @@ img{
     cursor: pointer;
     width: 250px;
 }
+
+button{
+    cursor: pointer;
+    width: 70px;
+}

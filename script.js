@@ -60,14 +60,22 @@ function getplyrChoice (event) {
 function game () {
     let comptrChoice = getComputerChoice();
     let plyrChoice = getplyrChoice (event);
-    playRound (comptrChoice,plyrChoice);
-    let score = document.querySelector("#score");
-    score.innerHTML = "Score: " +plyrScore +" - " + comptrScore
-    if (plyrScore == 5 || comptrScore) {
-        if (plyrScore > comptrScore) {
+    playRound (comptrChoice,plyrChoice); //plays round
+    let score = document.querySelector("#score"); 
+    score.innerHTML = "Score: " +plyrScore +" - " + comptrScore // keeps track of the score
+    if (plyrScore == 5 || comptrScore == 5) { // once one of the players reaches 5 points, the game ends
+        if (plyrScore > comptrScore) { //if the plyrScore is higher than comptrScore then the player wins
             score.innerHTML = "Nice! You won the game!"
         }else {
-            score,innerHTML = "Too bad, you lost"
+            score.innerHTML = "Too bad, you lost" 
         }
+        // hide game buttons
+        document.getElementById("#rock").style.visibility = "hidden"
+        document.getElementById("#paper").style.visibility = "hidden"
+        document.getElementById("#scissors").style.visibility = "hidden"
+        const replay = document.createElement("button"); // creating replay button
+        replay.innerHTML = "Wanna Replay?"
+        document.getElementById("#buttons").appendChild(replay)
+        //replay.setAttribute("style", )
     }
 }
