@@ -12,7 +12,7 @@ body{
 #choices{
     border: 1px black solid;
     width: 1000px;
-    height: 500px;
+    height: 400px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -23,30 +23,29 @@ body{
     border: 1px black solid;
     width: 250px;
     height: 300px;
-    cursor: pointer;
 }
 
 img{
     width: 200px;
     height: 200px;
     padding-left: 25px;
+    padding-top: 25px;
 }
 
-.caption {
-    font-size: 30px;
-    font-weight: bold;
+.btn-container{
     display: flex;
     justify-content: center;
-}
-
-#buttons {
-    display: flex;
-    justify-content: space-around;
-    cursor: pointer;
+    align-items: center;
     width: 250px;
+    height: 75px;
 }
 
 button{
     cursor: pointer;
-    width: 70px;
+    width: 90px;
+    height: 30px;
+}
+
+p{
+    font-size: 24px; 
 }
