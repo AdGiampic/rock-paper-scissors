@@ -1,1 +1,1 @@
-Javascript program that plays a game of rock, paper and scissors.
+This project is a rock-paper-scissors game made with Javascript with a UI.
