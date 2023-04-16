@@ -62,19 +62,19 @@ function game () {
     let plyrChoice = getplyrChoice (event);
     playRound (comptrChoice,plyrChoice); //plays round
     let score = document.querySelector("#score"); 
-    score.innerHTML = "Score: " +plyrScore +" - " + comptrScore // keeps track of the score
+    score.textContent = "Score: " +plyrScore +" - " + comptrScore // keeps track of the score
     if (plyrScore == 5 || comptrScore == 5) { // once one of the players reaches 5 points, the game ends
         if (plyrScore > comptrScore) { //if the plyrScore is higher than comptrScore then the player wins
-            score.innerHTML = "Excellent! You won the game."
+            score.textContent = "Excellent! You won the game."
         }else {
-            score.innerHTML = "Game over, you lost." 
+            score.textContent = "Game over, you lost." 
         }
         // hide game buttons 
         document.getElementById("rock").style.visibility = "hidden"
         document.getElementById("paper").style.visibility = "hidden"
         document.getElementById("scissors").style.visibility = "hidden"
         const replay = document.createElement("button"); // creating replay button
-        replay.innerHTML = "Replay"
+        replay.textContent = "Replay"
         replay.setAttribute("style", "margin-left :70px; font-weight :bold")
         document.getElementById("end").appendChild(replay) // if the user clicks the button the page will be reloaded
         replay.addEventListener("click", () => {
